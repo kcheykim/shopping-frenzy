@@ -1,19 +1,49 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// The `/api/products` endpoint
-
-// get all products
-router.get('/', (req, res) => {
-    // find all products
-    // be sure to include its associated Category and Tag data
+router.get('/', (req, res) => { //api/products endpoint
+    Product.findAll({ //find all products
+            include: [{ //include its associated Category and Tag data
+                model: Category,
+                attributes: ['id', 'category_name']
+            }],
+            include: [{ //include its associated Category and Tag data
+                model: Tag,
+                attributes: ['id', 'tag_name']
+            }],
+        }).then(dbTagData => res.json(dbTagData))
+        .catch(err => {
+            // console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // get one product
 router.get('/:id', (req, res) => {
-    // find a single product by its `id`
-    // be sure to include its associated Category and Tag data
+
+    Product.findOne({ //find a single product by its `id`
+        where: { id: req.params.id },
+        include: [{ //include its associated Category and Tag data
+            model: Category,
+            attributes: ['id', 'category_name']
+        }],
+        include: [{ //include its associated Category and Tag data
+            model: Tag,
+            attributes: ['id', 'tag_name']
+        }],
+    }).then(categoryData => {
+        if (!categoryData) {
+            res.status(404).json({ message: 'No category with this id' });
+            return;
+        }
+        res.json(categoryData);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
+
+
 
 // create new product
 router.post('/', (req, res) => {
@@ -74,7 +104,7 @@ router.put('/:id', (req, res) => {
             // figure out which ones to remove
             const productTagsToRemove = productTags
                 .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
-                .map(({ id }) => id);
+                // .map(({ id }) => id);
 
             // run both actions
             return Promise.all([

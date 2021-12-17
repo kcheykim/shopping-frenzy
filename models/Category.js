@@ -15,6 +15,7 @@ Category.init({ //initialize Category class
     }
 }, {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'category',

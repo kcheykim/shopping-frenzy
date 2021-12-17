@@ -15,6 +15,7 @@ Tag.init({ //initialize Tag class
     }
 }, {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'tag',

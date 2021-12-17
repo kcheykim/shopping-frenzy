@@ -14,7 +14,7 @@ Product.init({ //initialize Product class
         allowNull: false,
     },
     price: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
         validate: {
             isDecimal: true
@@ -37,6 +37,7 @@ Product.init({ //initialize Product class
     }
 }, {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'product',
