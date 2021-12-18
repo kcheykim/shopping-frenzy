@@ -30,8 +30,8 @@ The Shopping Frenzy application allows a business to compete with other E-commer
 
 ## Usage
 Here are the images and links of the pages: <br />
-![get-to-know-your-coworker](./assets/images/get-to-know-your-coworker.gif?raw=true)<br />
-https://watch.screencastify.com/v/fALfVvEIO9e1dXGNOwmN
+![shopping-frenzy](./assets/images/shopping-frenzy.gif?raw=true)<br />
+https://watch.screencastify.com/v/o7bcSn37X3yCfH9jNwp5
 
 ## Credits
 Here are the list of collaborators:  
