@@ -20,7 +20,7 @@ The Shopping Frenzy application allows a business to compete with other E-commer
 * [Questions](#questions)
 
 ## Installation
-`$git clone https://github.com/kcheykim/get-to-know-your-coworker.git`
+`$git clone https://github.com/kcheykim/shopping-frenzy.git`
 `$npm init -y`
 `$npm install express sequelize mysql2`
 `$mysql -u root -r`
